@@ -1,0 +1,68 @@
+@import '../styles/variables.scss';
+
+.wrapper {
+    background-color: $bg;
+    color: $primary;
+    padding: 30px;
+    overflow: hidden;
+}
+
+.titleWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.pageTitle {
+    margin: 0;
+}
+
+.filterSection {
+    margin-top: 20px;
+}
+
+.filterInput {
+
+    &:not(:first-child) {
+        margin-left: 10px;
+    }
+
+    &:nth-child(3) {
+        margin-right: 20px;
+    }
+
+}
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.listItem {
+    width: calc(33.33% - 40px);
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid $secondary;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.itemTitle {
+    font-weight: 700;
+}
+
+.itemText {
+    font-weight: 300;
+}
+
+.buttonsContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    &:not(:first-child) {
+        margin-left: 20px;
+    }
+}
