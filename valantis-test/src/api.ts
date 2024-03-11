@@ -3,7 +3,7 @@ import md5 from "md5";
 import { EErrorMessages } from "./enums/EErrorMessages";
 
 const PASSWORD = "Valantis";
-const API_URL = "http://api.valantis.store:40000/";
+const API_URL = "https://api.valantis.store:40000/";
 
 const generateAuthHeader = () => {
   const timestamp = new Date().toISOString().slice(0, 10).replace(/-/g, "");
