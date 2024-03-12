@@ -42,32 +42,15 @@ const ProductList = () => {
   const handleFilter = async () => {
     setIsLoading(true);
     try {
-      let filteredProductsIds: string[] = [];
-
-      const filterRequests = [];
-      if (productNameFilter) {
-        filterRequests.push(filterProducts({ productName: productNameFilter }));
-      }
-
-      if (minPriceFilter !== undefined) {
-        filterRequests.push(filterProducts({ minPrice: minPriceFilter }));
-      }
-      
-      if (brandFilter) {
-        filterRequests.push(filterProducts({ brand: brandFilter }));
-      }
-
-      for (const request of filterRequests) {
-        const response = await request;
-        filteredProductsIds = filteredProductsIds.concat(response);
-      }
-
-      const uniqueProductsIds = removeDuplicate(filteredProductsIds);
-
-      const filteredProducts = await fetchAPI("get_items", {
-        ids: uniqueProductsIds,
+      const response = await filterProducts({
+        productName: productNameFilter,
+        minPrice: minPriceFilter,
+        brand: brandFilter,
       });
-
+      const productsWithoutDublicates = removeDuplicate(response);
+      const filteredProducts = await fetchAPI("get_items", {
+        ids: productsWithoutDublicates,
+      });
       setIsLoading(false);
       setProducts(filteredProducts.result);
     } catch (error) {
